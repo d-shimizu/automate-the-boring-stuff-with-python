@@ -12,8 +12,13 @@ phone_regex = re.compile(r'''(
     (\s*(ext|x|ext.)\s*(\d{2,5}))?      # 内線番号
     )''', re.VERBOSE)
 
-# TODO: 電子メールの正規表現を作る。
-
+# 電子メールの正規表現を作る。
+email = re.compile(r'''(
+    [a-zA-Z0-9._%+-]+                   # ユーザー名
+    @                                   # @ 記号
+    [a-zA-Z0-9.-]+                      # ドメイン名
+    (\.[a-zA-Z]{2,4})                   # ドットなんとか
+    )''', re.VERBOSE)
 
 # TODO: クリップボードのテキストを検索する。
 
