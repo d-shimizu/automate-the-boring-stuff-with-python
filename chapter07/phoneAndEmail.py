@@ -20,8 +20,16 @@ email = re.compile(r'''(
     (\.[a-zA-Z]{2,4})                   # ドットなんとか
     )''', re.VERBOSE)
 
-# TODO: クリップボードのテキストを検索する。
-
+# クリップボードのテキストを検索する。
+text = str(pyperclip.paste())
+matches = []
+for groups in phone_regex.findall(text):
+    phone_num = '-'.join([groups[1], groups[3], groups[5])
+    if groups[8] != '':
+        phone_num += ' x' + groups[8]
+    matches.append(phone_num)
+for groups in email_regex.findall(text):
+    matches.append(groups[0])
 
 # TODO: 検索結果をクリップボードへ貼り付ける。
 
